@@ -293,18 +293,16 @@ def alu_exec(alu_op, a, b):
         case "MUL":
             result = a * b
         case "MULH":
-            result = (a * b) >> REG_SIZE
+            result = get_bits(a * b, REG_SIZE*2-1, REG_SIZE)
         case "MULHU":
-            result = (u32(a) * u32(b)) >> REG_SIZE
+            result = get_bits(u32(a) * u32(b), REG_SIZE*2-1, REG_SIZE)
         case "MULHSU":
-            result = (a * u32(b)) >> REG_SIZE
+            result = get_bits(a * u32(b), REG_SIZE*2-1, REG_SIZE)
         case "DIV":
             result = -1 if b == 0 else a // b
         case "DIVU":
             result = -1 if b == 0 else u32(a) // u32(b)        
         case "REM":
-            test = a//b
-            test2 = test * b
             result = -1 if b == 0 else abs((int(a / b) * b) - a)
         case "REMU":
             result = -1 if b == 0 else u32(a) % u32(b)
