@@ -1,0 +1,15 @@
+cycle=0 pc=0x00000004 stall=False flush=False | IF/ID=addi | ID/EX=NOP | EX/MEM=NOP | MEM/WB=NOP
+cycle=1 pc=0x00000008 stall=False flush=False | IF/ID=addi | ID/EX=addi | EX/MEM=NOP | MEM/WB=NOP
+cycle=2 pc=0x0000000c stall=False flush=False | IF/ID=addi | ID/EX=addi | EX/MEM=addi | MEM/WB=NOP
+cycle=3 pc=0x00000010 stall=False flush=False | IF/ID=mul | ID/EX=addi | EX/MEM=addi | MEM/WB=addi
+cycle=4 pc=0x00000014 stall=False flush=False | IF/ID=mulh | ID/EX=mul | EX/MEM=addi | MEM/WB=addi | WB:x1<-0x00000005
+cycle=5 pc=0x00000018 stall=False flush=False | IF/ID=mulhu | ID/EX=mulh | EX/MEM=mul | MEM/WB=addi | WB:x2<-0x-0000064
+cycle=6 pc=0x0000001c stall=False flush=False | IF/ID=mulhsu | ID/EX=mulhu | EX/MEM=mulh | MEM/WB=mul | WB:x3<-0x000007ff
+cycle=7 pc=0x00000020 stall=False flush=False | IF/ID=div | ID/EX=mulhsu | EX/MEM=mulhu | MEM/WB=mulh | WB:x4<-0x-00001f4
+cycle=8 pc=0x00000024 stall=False flush=False | IF/ID=divu | ID/EX=div | EX/MEM=mulhsu | MEM/WB=mulhu | WB:x5<-0xffffffff
+cycle=9 pc=0x00000028 stall=False flush=False | IF/ID=rem | ID/EX=divu | EX/MEM=div | MEM/WB=mulhsu | WB:x6<-0x000007fe
+cycle=10 pc=0x0000002c stall=False flush=False | IF/ID=remu | ID/EX=rem | EX/MEM=divu | MEM/WB=div | WB:x7<-0xfffffe0c
+cycle=11 pc=0x0000002c stall=False flush=False | IF/ID=NOP | ID/EX=remu | EX/MEM=rem | MEM/WB=divu | WB:x8<-0x-0000014
+cycle=12 pc=0x0000002c stall=False flush=False | IF/ID=NOP | ID/EX=NOP | EX/MEM=remu | MEM/WB=rem | WB:x9<-0x3333331f
+cycle=13 pc=0x0000002c stall=False flush=False | IF/ID=NOP | ID/EX=NOP | EX/MEM=NOP | MEM/WB=remu | WB:x10<-0x0000002f
+cycle=14 pc=0x0000002c stall=False flush=False | IF/ID=NOP | ID/EX=NOP | EX/MEM=NOP | MEM/WB=NOP | WB:x11<-0x000007ff
